@@ -4,7 +4,7 @@ import AVFoundation
 
 private let backendURLs = [
     URL(string: "http://127.0.0.1:3010/api/assistant")!,
-    URL(string: "http://51.91.125.99:3010/api/assistant")!
+    URL(string: "http://51.91.125.99/languageai/api/assistant")!
 ]
 
 struct ContentView: View {
@@ -311,7 +311,7 @@ final class AssistantViewModel: NSObject, ObservableObject {
             messages.append(reply)
             speak(assistantResponse.speak ?? assistantResponse.message)
         } catch {
-            messages.append(ChatMessage(role: .assistant, text: "Je n'arrive pas a joindre le backend. Essaie http://51.91.125.99:3010/health dans Safari. Erreur: \(error.localizedDescription)"))
+            messages.append(ChatMessage(role: .assistant, text: "Je n'arrive pas a joindre le backend. Essaie http://51.91.125.99/languageai/health dans Safari. Erreur: \(error.localizedDescription)"))
         }
 
         isLoading = false

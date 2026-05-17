@@ -22,6 +22,7 @@ npm start
 ```
 
 Le backend écoute par défaut sur `http://127.0.0.1:3010`.
+Sur cette VM, nginx l'expose aussi publiquement via `http://51.91.125.99/languageai`.
 
 Variables utiles :
 - `PORT=3010`
@@ -33,7 +34,7 @@ Variables utiles :
 
 Ouvre `LanguageAi.xcodeproj` dans Xcode, puis lance l'app sur simulateur.
 
-Sur simulateur, `http://127.0.0.1:3010` pointe vers la machine hôte. Sur un iPhone physique, remplace `backendURL` dans `LanguageAi/ContentView.swift` par l'adresse IP locale du Mac, par exemple `http://192.168.1.20:3010/api/assistant`.
+Sur simulateur local, `http://127.0.0.1:3010` pointe vers la machine hôte. Depuis un iPhone ou un simulateur qui n'est pas sur cette VM, utilise `http://51.91.125.99/languageai/api/assistant`.
 
 ## Exemple de demande
 
