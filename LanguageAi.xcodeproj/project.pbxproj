@@ -15,9 +15,10 @@
 
 /* Begin PBXFileReference section */
         27E934851F82B1C93BDC69E4 /* LanguageAi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LanguageAi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-        FC6DFB2E8BB880CE4DC9047A /* LanguageAiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageAiApp.swift"; sourceTree = "<group>"; };
-        864CD279A712F18484DF3417 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView.swift"; sourceTree = "<group>"; };
-        F1886A1E679BFC6965941B38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
+		FC6DFB2E8BB880CE4DC9047A /* LanguageAiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageAiApp.swift"; sourceTree = "<group>"; };
+		864CD279A712F18484DF3417 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView.swift"; sourceTree = "<group>"; };
+		6B0F6E8B7D2B4DB1B4A5C901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
+		F1886A1E679BFC6965941B38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
         C5EAF7F4C1BB00216A0ED1E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,9 +52,10 @@
         668D3CE5BCEEB4D0238832BC /* LanguageAi */ = {
             isa = PBXGroup;
             children = (
-                FC6DFB2E8BB880CE4DC9047A /* LanguageAiApp.swift */,
-                864CD279A712F18484DF3417 /* ContentView.swift */,
-                F1886A1E679BFC6965941B38 /* Assets.xcassets */,
+				FC6DFB2E8BB880CE4DC9047A /* LanguageAiApp.swift */,
+				864CD279A712F18484DF3417 /* ContentView.swift */,
+				6B0F6E8B7D2B4DB1B4A5C901 /* Info.plist */,
+				F1886A1E679BFC6965941B38 /* Assets.xcassets */,
                 50FE316CDF855591CBD16A3C /* Preview Content */,
             );
             path = "LanguageAi";
@@ -271,15 +273,8 @@
                 CURRENT_PROJECT_VERSION = 1;
                 DEVELOPMENT_ASSET_PATHS = "\"LanguageAi/Preview Content\"";
                 ENABLE_PREVIEWS = YES;
-                GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "LanguageAi utilise le micro pour convertir ta voix en texte.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "LanguageAi utilise la reconnaissance vocale iOS pour comprendre tes demandes.";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "LanguageAi contacte ton backend local pendant le developpement.";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LanguageAi/Info.plist;
                 LD_RUNPATH_SEARCH_PATHS = (
                     "$(inherited)",
                     "@executable_path/Frameworks",
@@ -302,15 +297,8 @@
                 CURRENT_PROJECT_VERSION = 1;
                 DEVELOPMENT_ASSET_PATHS = "\"LanguageAi/Preview Content\"";
                 ENABLE_PREVIEWS = YES;
-                GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "LanguageAi utilise le micro pour convertir ta voix en texte.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "LanguageAi utilise la reconnaissance vocale iOS pour comprendre tes demandes.";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "LanguageAi contacte ton backend local pendant le developpement.";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LanguageAi/Info.plist;
                 LD_RUNPATH_SEARCH_PATHS = (
                     "$(inherited)",
                     "@executable_path/Frameworks",

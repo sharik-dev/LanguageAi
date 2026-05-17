@@ -2,7 +2,10 @@ import SwiftUI
 import Speech
 import AVFoundation
 
-private let backendURL = URL(string: "http://127.0.0.1:3010/api/assistant")!
+private let backendURLs = [
+    URL(string: "http://127.0.0.1:3010/api/assistant")!,
+    URL(string: "http://51.91.125.99:3010/api/assistant")!
+]
 
 struct ContentView: View {
     @StateObject private var assistant = AssistantViewModel()
@@ -303,26 +306,42 @@ final class AssistantViewModel: NSObject, ObservableObject {
         status = "Codex reflechit"
 
         do {
-            var request = URLRequest(url: backendURL)
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = try JSONEncoder().encode(AssistantRequest(message: text))
-
-            let (data, response) = try await URLSession.shared.data(for: request)
-            guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
-                throw URLError(.badServerResponse)
-            }
-
-            let assistantResponse = try JSONDecoder().decode(AssistantResponse.self, from: data)
+            let assistantResponse = try await postToBackend(message: text)
             let reply = ChatMessage(role: .assistant, text: assistantResponse.message, actions: assistantResponse.actions)
             messages.append(reply)
             speak(assistantResponse.speak ?? assistantResponse.message)
         } catch {
-            messages.append(ChatMessage(role: .assistant, text: "Je n'arrive pas a joindre le backend local. Verifie qu'il tourne sur http://127.0.0.1:3010."))
+            messages.append(ChatMessage(role: .assistant, text: "Je n'arrive pas a joindre le backend. Essaie http://51.91.125.99:3010/health dans Safari. Erreur: \(error.localizedDescription)"))
         }
 
         isLoading = false
         status = "Assistant local"
+    }
+
+    private func postToBackend(message: String) async throws -> AssistantResponse {
+        let body = try JSONEncoder().encode(AssistantRequest(message: message))
+        var lastError: Error?
+
+        for url in backendURLs {
+            do {
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.timeoutInterval = 180
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.httpBody = body
+
+                let (data, response) = try await URLSession.shared.data(for: request)
+                guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
+                    throw URLError(.badServerResponse)
+                }
+
+                return try JSONDecoder().decode(AssistantResponse.self, from: data)
+            } catch {
+                lastError = error
+            }
+        }
+
+        throw lastError ?? URLError(.cannotConnectToHost)
     }
 
     private func speak(_ text: String) {
